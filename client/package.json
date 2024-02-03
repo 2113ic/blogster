@@ -1,0 +1,27 @@
+{
+  "name": "client",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@icxy/el-theme": "^0.0.2",
+    "element-plus": "^2.5.1",
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@icxy/ns": "^0.2.0",
+    "@types/node": "^20.11.0",
+    "@vitejs/plugin-vue": "^4.5.2",
+    "sass": "^1.69.7",
+    "typescript": "^5.2.2",
+    "unplugin-vue-components": "^0.26.0",
+    "vite": "^5.0.8",
+    "vue-tsc": "^1.8.25"
+  }
+}
