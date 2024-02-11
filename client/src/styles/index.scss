@@ -1,7 +1,0 @@
-@use 'utils' as *;
-
-body {
-  margin: 0;
-  color: get('text-color', 'primary');
-  background-color: get('bg-color', 'page');
-}

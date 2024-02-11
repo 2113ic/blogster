@@ -1,30 +1,6 @@
-<script setup>
-import { useNamespace } from '@icxy/ns'
-
-const ns = useNamespace('logo')
-</script>
-
 <template>
-  <div :class="ns()">
-    <img :class="ns.child('img')" src="/logo.svg" alt="logo">
-    <h1>BLOG SYSTEM</h1>
+  <div flex="~ gap2 content-center">
+    <img class="w6 sm:w8 select-none" src="/logo.svg" alt="logo">
+    <h1 class="ml2 font-size-4 sm:font-size-5 select-none">BLOG SYSTEM</h1>
   </div>
 </template>
-
-<style lang="scss">
-@include b(logo) {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  user-select: none;
-
-  @include e(img) {
-    width: 32px;
-  }
-  h1 {
-    margin: 0;
-    font-size: 24px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  }
-}
-</style>

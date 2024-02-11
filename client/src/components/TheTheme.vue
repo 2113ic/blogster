@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 function toggleTheme() {
   const html = document.documentElement
   const classNames = html.classList

@@ -10,16 +10,17 @@
       "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
-    "types": ["element-plus/global", "vite/client"],
-    "allowImportingTsExtensions": true,
+    "types": ["vite/client"],
     "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noEmit": true,
     "isolatedModules": true,
     "skipLibCheck": true
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": [
+    "uno.config.ts",
+    "src/**/*.ts", 
+    "src/**/*.tsx", 
+    "src/**/*.vue"
+  ]
 }

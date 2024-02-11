@@ -1,66 +1,27 @@
-<script setup lang="ts">
-import { useNamespace } from '@icxy/ns'
-import { ref } from 'vue'
-
-const form = ref({
-  account: '',
-  password: '',
-})
-
-const [login] = useNamespace(['login'])
-</script>
-
 <template>
-  <header>
+  <header
+    class="max-w-1100px h18 ma px3" sm="h13 px6"
+    flex="~ justify-between items-center"
+  >
     <TheLogo />
     <TheTheme />
   </header>
-  <div :class="login()">
-    <h2>登录</h2>
-    <el-form :model="form" label-position="top">
-      <el-form-item label="账号">
-        <el-input
-          v-model="form.account"
-          placeholder="acount"
-        />
-      </el-form-item>
-      <el-form-item label="密码">
-        <el-input
-          v-model="form.password"
-          type="password"
-          placeholder="password"
-        />
-      </el-form-item>
-    </el-form>
-    <div :class="login.child('right')">
-      <el-button style="width: 88px;" type="primary">登录</el-button>
+  <div class="pt18 px3 sm:px6">
+    <div class="max-w-300px ma p6 rd-2" bg="white b-gray dark:gray-900">
+      <h2 class="mt0 font-size-5">登录</h2>
+      <form autocomplete="off">
+        <div my3>
+          <label for="account" class="inline-block my2">账号</label>
+          <input id="account" type="text" class="x-input" placeholder="账号">
+        </div>
+        <div my3>
+          <label for="password" class="inline-block my2">密码</label>
+          <input id="password" type="text" class="x-input" placeholder="密码">
+        </div>
+      </form>
+      <div class="my3 text-right">
+        <button class="x-btn">login</button>
+      </div>
     </div>
   </div>
 </template>
-
-<style lang="scss">
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  height: 72px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-@include b(login) {
-  width: 300px;
-  margin: 72px auto 0;
-  padding: 24px;
-  background-color: get('bg-color');
-  border: 2px solid get('border-color', 'lighter');
-  border-radius: 12px;
-  box-sizing: border-box;
-
-  h2 { margin-top: 0; }
-  @include e(right) {
-    text-align: right;
-  }
-}
-</style>
