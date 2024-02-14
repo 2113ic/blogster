@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
-import App from './App.vue'
 import router from './router'
+import App from './App.vue'
 
 import '@/styles/index.scss'
-import '@icxy/el-theme/base'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 
 createApp(App)
   .use(router)

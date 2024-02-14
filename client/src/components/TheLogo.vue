@@ -1,13 +1,27 @@
-<script setup>
+<script setup lang="ts">
 import { useNamespace } from '@icxy/ns'
 
+const props = defineProps({
+  title: {
+    default: 'BLOG SYSTEM',
+    type: String,
+  },
+  fontSize: {
+    default: '24px',
+    type: String,
+  },
+  imgSize: {
+    default: '32px',
+    type: String,
+  },
+})
 const ns = useNamespace('logo')
 </script>
 
 <template>
   <div :class="ns()">
-    <img :class="ns.child('img')" src="/logo.svg" alt="logo">
-    <h1>BLOG SYSTEM</h1>
+    <img :style="{ width: props.imgSize }" src="/logo.svg" alt="logo">
+    <h1 :style="{ fontSize: props.fontSize }">{{ props.title }}</h1>
   </div>
 </template>
 
@@ -16,14 +30,11 @@ const ns = useNamespace('logo')
   display: flex;
   gap: 8px;
   align-items: center;
+  justify-content: center;
   user-select: none;
 
-  @include e(img) {
-    width: 32px;
-  }
   h1 {
     margin: 0;
-    font-size: 24px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 }

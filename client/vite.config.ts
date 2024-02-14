@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
-import ElementPlusResolver from '@icxy/el-theme'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   plugins: [
@@ -19,12 +19,7 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      scss: {
-        additionalData: `
-          @use '@/styles/utils' as *;
-          @use '@icxy/ns/dist/ns' as *;
-        `
-      },
+      scss: { additionalData: `@use '@/styles/forward' as *;` },
     },
   },
 })

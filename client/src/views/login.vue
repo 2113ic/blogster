@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useNamespace } from '@icxy/ns'
+import { useRouter } from 'vue-router'
 import { ref } from 'vue'
+
+const router = useRouter()
 
 const form = ref({
   account: '',
@@ -17,23 +20,23 @@ const [login] = useNamespace(['login'])
   </header>
   <div :class="login()">
     <h2>登录</h2>
-    <el-form :model="form" label-position="top">
-      <el-form-item label="账号">
-        <el-input
+    <ElForm :model="form" label-position="top">
+      <ElFormItem label="账号">
+        <ElInput
           v-model="form.account"
           placeholder="acount"
         />
-      </el-form-item>
-      <el-form-item label="密码">
-        <el-input
+      </ElFormItem>
+      <ElFormItem label="密码">
+        <ElInput
           v-model="form.password"
           type="password"
           placeholder="password"
         />
-      </el-form-item>
-    </el-form>
+      </ElFormItem>
+    </ElForm>
     <div :class="login.child('right')">
-      <el-button style="width: 88px;" type="primary">登录</el-button>
+      <ElButton style="width: 88px;" type="primary" @click="router.push('/home')">登录</ElButton>
     </div>
   </div>
 </template>

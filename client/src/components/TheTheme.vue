@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 function toggleTheme() {
   const html = document.documentElement
   const classNames = html.classList
@@ -18,8 +18,8 @@ function toggleTheme() {
 
 <style lang="scss" scoped>
 .theme-btn {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border: 0;
   padding: 6px;
   border-radius: 50%;
@@ -27,7 +27,7 @@ function toggleTheme() {
   background-color: transparent;
 
   &:hover {
-    background-color: var(--el-fill-color);
+    background-color: get('fill-color', 'darker');
   }
 }
 
@@ -35,8 +35,8 @@ function toggleTheme() {
   --icon-theme: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23888' d='M15 2h2v4.96h-2zm6.687 6.89l3.507-3.506 1.414 1.414-3.507 3.507zM25.04 15H30v2h-4.96zm-3.347 8.104l1.414-1.414 3.507 3.507L25.2 26.61zM15 25.04h2V30h-2zm-9.604.162l3.508-3.507 1.414 1.414-3.507 3.507zM2 15h4.96v2H2zm3.39-8.197l1.415-1.414 3.507 3.507-1.414 1.414zM16 12a4 4 0 1 1-4 4 4 4 0 0 1 4-4m0-2a6 6 0 1 0 6 6 6 6 0 0 0-6-6z'/%3E%3C/svg%3E");
 
   display: inline-block;
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   color: inherit;
   background-color: currentColor;
   mask: var(--icon-theme) no-repeat;

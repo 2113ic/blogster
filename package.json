@@ -3,14 +3,14 @@
   "type": "module",
   "version": "0.0.1-dev",
   "private": true,
-  "packageManager": "pnpm@8.15.1",
+  "packageManager": "pnpm@8.15.2",
   "scripts": {
     "dev": "pnpm -F client dev",
     "start": "pnpm -F @icxy/blog-core start"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.6.2",
+    "@antfu/eslint-config": "^2.6.4",
     "eslint": "^8.56.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   }
 }

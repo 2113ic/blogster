@@ -3,7 +3,6 @@
     "target": "ES2020",
     "jsx": "preserve",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "useDefineForClassFields": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
@@ -11,11 +10,7 @@
     },
     "resolveJsonModule": true,
     "types": ["element-plus/global", "vite/client"],
-    "allowImportingTsExtensions": true,
     "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noEmit": true,
     "isolatedModules": true,
     "skipLibCheck": true
