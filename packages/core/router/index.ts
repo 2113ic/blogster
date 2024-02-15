@@ -4,7 +4,7 @@ import type Router from 'koa__router'
 import user from './user'
 
 const routeConfig: Record<string, Router> = {
-  user
+  user,
 }
 
 export default async (ctx: Context, next: Next) => {

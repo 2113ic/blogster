@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "types": ["koa-bodyparser"],
+    "esModuleInterop": true
+  }
+}
