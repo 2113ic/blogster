@@ -42,6 +42,7 @@
   border-radius: 50%;
   margin-left: 12px;
 }
+
 .el-container {
   height: 100vh;
 

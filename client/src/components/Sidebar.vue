@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Files, Fries, Message, Setting, Stopwatch, Sugar } from '@element-plus/icons-vue'
+import { DataAnalysis, Files, Fries, Message, Setting, Stopwatch, Sugar } from '@element-plus/icons-vue'
 import { useWindowSize } from '@vueuse/core'
 import { useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
@@ -12,6 +12,7 @@ const menuItems = [
   { icon: Files, text: '文章', route: 'article' },
   { icon: Message, text: '消息', route: 'message' },
   { icon: Fries, text: '插件', route: 'plugin' },
+  { icon: DataAnalysis, text: '日志', route: 'log' },
   { icon: Setting, text: '设置', route: 'setting' },
 ]
 
@@ -88,4 +89,5 @@ watch(windowWidth, (val) => {
   .el-icon {
     margin: 0;
   }
-}</style>
+}
+</style>

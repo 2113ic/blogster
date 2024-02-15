@@ -1,0 +1,7 @@
+{
+  "name": "@icxy/blog-cli",
+  "description": "",
+  "dependencies": {
+    "@inquirer/prompts": "^3.3.2"
+  }
+}

@@ -33,6 +33,10 @@ export default createRouter({
           component: () => import('@/views/home/Plugin.vue'),
         },
         {
+          path: 'log',
+          component: () => import('@/views/home/Log.vue'),
+        },
+        {
           path: 'setting',
           component: () => import('@/views/home/Setting.vue'),
         },
