@@ -1,5 +1,11 @@
 $prefix: 'el';
 
+@mixin xs() {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
 @function join($list, $separator: '-') {
   $result: $prefix + $separator;
   $len: length($list);

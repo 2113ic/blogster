@@ -37,5 +37,9 @@ const ns = useNamespace('logo')
     margin: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
+
+  @include xs() {
+    h1 { display: none; }
+  }
 }
 </style>

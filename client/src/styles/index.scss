@@ -1,5 +1,51 @@
 @use 'utils' as *;
 
+// .is-night is dark mode for img.
+[data-theme=dark] .is-night {
+  background-color: hsla(223deg, 71%, 16%, 0.6);
+  background-blend-mode: darken;
+  filter: brightness(80%) grayscale(20%) contrast(1.2);
+}
+
+/* Scrollbar style. */
+/* Reset user proxy style for browser scrollbar. */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-clip: content-box;
+  -webkit-background-clip: content-box;
+  background-color: get('border-color', 'extra-light');
+  border: 3px solid transparent;
+  border-radius: 99px;
+  transition: background 0.2s ease-in-out;
+}
+
+/* Selection style. */
+/* When user select text with will change selected text background color. */
+@mixin selectionMixin() {
+  background: get('color', 'primary-light-7');
+  color: inherit;
+}
+
+html::selection {
+  @include selectionMixin;
+}
+
+html::-moz-selection {
+  @include selectionMixin;
+}
+
+html::-webkit-selection {
+  @include selectionMixin;
+}
+
 body {
   margin: 0;
   color: get('text-color', 'primary');

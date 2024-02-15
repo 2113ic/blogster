@@ -17,8 +17,16 @@ export default createRouter({
           component: () => import('@/views/home/Dashboard.vue'),
         },
         {
+          path: 'project',
+          component: () => import('@/views/home/Project.vue'),
+        },
+        {
           path: 'article',
           component: () => import('@/views/home/Article.vue'),
+        },
+        {
+          path: 'message',
+          component: () => import('@/views/home/Message.vue'),
         },
         {
           path: 'plugin',
