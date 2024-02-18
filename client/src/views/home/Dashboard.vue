@@ -22,12 +22,10 @@ const increasePercentage = 24
         </template>
       </ElStatistic>
       <div class="statistic-footer">
-        <div class="footer-item">
-          <span>{{ card.comparison }}</span>
-          <span class="increase">
-            {{ increasePercentage }}% <ElIcon><CaretTop /></ElIcon>
-          </span>
-        </div>
+        <span>{{ card.comparison }}</span>
+        <span class="increase">
+          {{ increasePercentage }}%<ElIcon><CaretTop /></ElIcon>
+        </span>
       </div>
     </div>
   </div>
@@ -37,8 +35,9 @@ const increasePercentage = 24
 </template>
 
 <style lang="scss" scoped>
-.statistics-box{
-  display: grid; gap: 12px;
+.statistics-box {
+  display: grid;
+  gap: 12px;
   padding-bottom: 12px;
   grid-template-columns: repeat(4, 1fr);
 
@@ -49,13 +48,16 @@ const increasePercentage = 24
   @include sm() {
     grid-template-columns: repeat(3, 1fr);
   }
+
   @include xs() {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .scheduled-tasks {
-  h2 { font-size: 18px; }
+  h2 {
+    font-size: 18px;
+  }
 }
 
 .el-statistic {
@@ -75,24 +77,12 @@ const increasePercentage = 24
     }
 
     .statistic-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
       margin-top: 16px;
       font-size: 12px;
       color: get(text-color, regular);
 
-      .footer-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    
-        span:last-child {
-          display: inline-flex;
-          align-items: center;
-          margin-left: 4px;
-        }
+      span:last-child {
+        margin-left: 4px;
       }
     }
 
@@ -100,5 +90,4 @@ const increasePercentage = 24
     .decrease { color: get(color, danger); }
   }
 }
-
 </style>

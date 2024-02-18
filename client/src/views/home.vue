@@ -3,15 +3,11 @@
 <template>
   <ElContainer>
     <ElHeader>
-      <TheLogo
-        font-size="18px"
-        img-size="24px"
-        style="height: 56px;"
-      />
+      <TheLogo font-size="1.5em"/>
       <div class="menu-box">
         <TheTheme />
         <ElDropdown>
-          <img class="avatar" src="/avatar.jpg" alt="avatar">
+          <img class="avatar" src="/logo.png" alt="avatar">
           <template #dropdown>
             <ElDropdownMenu>
               <ElDropdownItem>我的博客</ElDropdownItem>
@@ -35,7 +31,6 @@
   align-items: center;
   justify-content: space-between;
 }
-
 .avatar {
   width: 24px;
   height: 24px;

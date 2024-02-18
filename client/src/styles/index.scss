@@ -1,7 +1,15 @@
 @use 'utils' as *;
 
+@font-face {
+  font-display: block;
+  font-family: BEYNO;
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/BEYNO.woff2) format("woff2"),url(/font/BEYNO.woff) format("woff");
+}
+
 // .is-night is dark mode for img.
-[data-theme=dark] .is-night {
+.dark .is-night {
   background-color: hsla(223deg, 71%, 16%, 0.6);
   background-blend-mode: darken;
   filter: brightness(80%) grayscale(20%) contrast(1.2);
@@ -50,4 +58,5 @@ body {
   margin: 0;
   color: get('text-color', 'primary');
   background-color: get('bg-color', 'page');
+  -webkit-font-smoothing: antialiased;
 }
