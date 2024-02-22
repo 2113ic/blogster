@@ -1,16 +1,23 @@
 {
-  "name": "@icxy/blog-root",
+  "name": "@icxy-blog/root",
   "type": "module",
   "version": "0.0.1-dev",
   "private": true,
-  "packageManager": "pnpm@8.15.2",
+  "packageManager": "pnpm@8.15.3",
   "scripts": {
-    "dev": "pnpm -F client dev",
-    "start": "pnpm -F @icxy/blog-core start"
+    "dev": "pnpm -F @icxy-blog/client dev",
+    "dev:cli": "pnpm -F @icxy-blog/cli start"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.4",
+    "@icxy-blog/cli": "workspace:^",
+    "@icxy-blog/core": "workspace:^",
+    "dotenv": "^16.4.4",
     "eslint": "^8.56.0",
-    "typescript": "^5.3.3"
+    "fast-glob": "^3.3.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.1",
+    "vite-plugin-dts": "^3.7.2"
   }
 }

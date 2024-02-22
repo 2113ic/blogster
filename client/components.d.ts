@@ -26,6 +26,7 @@ declare module 'vue' {
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElStatistic: typeof import('element-plus/es')['ElStatistic']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
+    ICarbonLogoGithub: typeof import('~icons/carbon/logo-github')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/Sidebar.vue')['default']

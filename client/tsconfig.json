@@ -10,7 +10,11 @@
       "@icxy-blog/*": ["../packages/*"]
     },
     "resolveJsonModule": true,
-    "types": ["element-plus/global", "vite/client"],
+    "types": [
+      "element-plus/global",
+      "unplugin-icons/types/vue",
+      "vite/client"
+    ],
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
