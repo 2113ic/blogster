@@ -3,18 +3,10 @@
 <template>
   <ElContainer>
     <ElHeader>
-      <TheLogo font-size="1.5em"/>
+      <TheLogo font-size="1.5em" />
       <div class="menu-box">
         <TheTheme />
-        <ElDropdown>
-          <img class="avatar" src="/logo.png" alt="avatar">
-          <template #dropdown>
-            <ElDropdownMenu>
-              <ElDropdownItem>我的博客</ElDropdownItem>
-              <ElDropdownItem>退出</ElDropdownItem>
-            </ElDropdownMenu>
-          </template>
-        </ElDropdown>
+        <UserMenu />
       </div>
     </ElHeader>
     <ElContainer>
@@ -30,12 +22,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.avatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  margin-left: 12px;
 }
 
 .el-container {

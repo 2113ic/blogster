@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh-CN" class="">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/logo.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BLOGSTER</title>
-    <script>
-      ;(function initTheme() {
-        const html = document.documentElement
-        const storedTheme = localStorage.getItem('theme')
-        const systemTheme = window.matchMedia(
-          '(prefers-color-scheme: dark)'
-        ).matches
-        const applyTheme = storedTheme || (systemTheme ? 'dark' : 'light')
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLOGSTER</title>
+  <script>
+    ;(function initTheme() {
+      const html = document.documentElement
+      const storedTheme = localStorage.getItem('theme')
+      const systemTheme = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches
+      const applyTheme = storedTheme || (systemTheme ? 'dark' : 'light')
 
-        localStorage.setItem('theme', applyTheme)
-        html.classList.add(applyTheme)
-      })()
-    </script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+      localStorage.setItem('theme', applyTheme)
+      html.classList.add(applyTheme)
+    })()
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
 </html>

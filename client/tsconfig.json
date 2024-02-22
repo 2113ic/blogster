@@ -6,7 +6,8 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@icxy-blog/*": ["../packages/*"]
     },
     "resolveJsonModule": true,
     "types": ["element-plus/global", "vite/client"],

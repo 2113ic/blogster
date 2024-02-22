@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "@icxy-blog/client",
   "type": "module",
   "version": "1.0.0",
   "private": true,
@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "@supabase/supabase-js": "^2.39.6",
     "@vueuse/core": "^10.7.2",
+    "axios": "^1.6.7",
     "element-plus": "^2.5.5",
+    "pinia": "^2.1.7",
     "vue": "^3.4.19",
     "vue-router": "^4.2.5"
   },

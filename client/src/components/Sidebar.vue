@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { DataAnalysis, Files, Fries, Message, Setting, Stopwatch, Sugar } from '@element-plus/icons-vue'
 import { useWindowSize } from '@vueuse/core'
-import { useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
 
-const router = useRouter()
-const curRoute = router.currentRoute.value.fullPath.split('/').at(-1)
 const menuItems = [
   { icon: Stopwatch, text: '仪表盘', route: 'dashboard' },
   { icon: Sugar, text: '作品集', route: 'project' },
@@ -31,7 +28,7 @@ watch(windowWidth, (val) => {
 
 <template>
   <ElAside :width="asideWidth">
-    <ElMenu :default-active="curRoute" router>
+    <ElMenu :default-active="$route.path.slice(1)" router>
       <ElMenuItem v-for="item in menuItems" :key="item.text" :index="item.route">
         <ElIcon>
           <Component :is="item.icon" />

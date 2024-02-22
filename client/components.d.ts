@@ -31,5 +31,7 @@ declare module 'vue' {
     Sidebar: typeof import('./src/components/Sidebar.vue')['default']
     TheLogo: typeof import('./src/components/TheLogo.vue')['default']
     TheTheme: typeof import('./src/components/TheTheme.vue')['default']
+    TheUserMenu: typeof import('./src/components/TheUserMenu.vue')['default']
+    UserMenu: typeof import('./src/components/UserMenu.vue')['default']
   }
 }
