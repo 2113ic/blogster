@@ -1,7 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { provide, ref } from 'vue'
+
+const isloading = ref(false)
+
+provide('isloading', isloading)
+</script>
 
 <template>
-  <ElContainer>
+  <ElContainer v-loading="isloading">
     <ElHeader>
       <TheLogo font-size="1.5em" />
       <div class="menu-box">

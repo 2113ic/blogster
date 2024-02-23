@@ -1,15 +1,32 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
+import { inject } from 'vue'
 import { useRouter } from 'vue-router'
-import supabase from '@/api/supabase'
 import { useUserStore } from '@/store/user'
+import supabase from '@/api/supabase'
 
-const userStore = useUserStore()
 const router = useRouter()
+const userStore = useUserStore()
+const isloading = inject('isloading') as Ref<boolean>
 
 async function signOut() {
-  await supabase.auth.signOut({ scope: 'local' })
-  userStore.$reset()
-  router.replace('/login')
+  isloading.value = true
+
+  try {
+    const { error } = await supabase.auth
+      .signOut({ scope: 'local' })
+
+    if (error) throw new Error(error.message)
+
+    userStore.$reset()
+    router.replace('/login')
+  }
+  catch (e: any) {
+    console.error('Error logout with GitHub:', e.message)
+  }
+  finally {
+    isloading.value = false
+  }
 }
 </script>
 

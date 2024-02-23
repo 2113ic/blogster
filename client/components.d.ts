@@ -27,6 +27,7 @@ declare module 'vue' {
     ElStatistic: typeof import('element-plus/es')['ElStatistic']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     ICarbonLogoGithub: typeof import('~icons/carbon/logo-github')['default']
+    ITwemojiConstruction: typeof import('~icons/twemoji/construction')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/Sidebar.vue')['default']
@@ -34,5 +35,8 @@ declare module 'vue' {
     TheTheme: typeof import('./src/components/TheTheme.vue')['default']
     TheUserMenu: typeof import('./src/components/TheUserMenu.vue')['default']
     UserMenu: typeof import('./src/components/UserMenu.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }
