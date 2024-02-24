@@ -1,10 +1,9 @@
 import type { Context, Next } from 'koa'
 import type Router from 'koa__router'
-
-import user from './user'
+import auth from './auth'
 
 const routeConfig: Record<string, Router> = {
-  user,
+  auth,
 }
 
 export default async (ctx: Context, next: Next) => {

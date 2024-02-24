@@ -1,5 +1,7 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "composite": true,
     "types": ["koa-bodyparser"],
     "esModuleInterop": true
   }

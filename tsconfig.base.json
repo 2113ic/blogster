@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "resolveJsonModule": true
+  },
+  "include": ["packages/**/*.ts"],
+  "exclude": ["node_modules"]
+}
