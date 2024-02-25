@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
+    "target": "ES2020",
     "rootDir": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true
   },
   "include": ["packages/**/*.ts"],
