@@ -1,4 +1,8 @@
 // el-tabs
+.el-tabs {
+  height: 100%
+}
+
 .el-tabs__nav-wrap {
   display: inline-block;
   padding: 0 12px;
@@ -6,10 +10,15 @@
   background-color: get('fill-color', 'light');
 
   &::after {
-    background: none;
+    background: none !important;
   }
 
   .el-tabs__active-bar {
     height: 3px;
   }
+}
+
+// el-loading
+.el-loading-mask {
+  background: none !important;
 }

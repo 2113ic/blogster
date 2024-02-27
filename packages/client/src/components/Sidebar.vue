@@ -45,6 +45,7 @@ watch(windowWidth, (val) => {
   border-right: 1px dashed var(--el-border-color);
 
   @include xs() {
+    margin-right: 0;
     border: 0;
     border-bottom: 1px dashed var(--el-border-color);
   }

@@ -13,25 +13,27 @@ const increasePercentage = 24
 </script>
 
 <template>
-  <div class="statistics-box">
-    <div v-for="card in statisticCards" :key="card.title" class="statistic-card">
-      <ElStatistic :value="statisticValue">
-        <template #title>
-          {{ card.title }}
-          <ElIcon><Component :is="card.icon" /></ElIcon>
-        </template>
-      </ElStatistic>
-      <div class="statistic-footer">
-        <span>{{ card.comparison }}</span>
-        <span class="increase">
-          {{ increasePercentage }}%<ElIcon><CaretTop /></ElIcon>
-        </span>
+  <ElMain>
+    <div class="statistics-box">
+      <div v-for="card in statisticCards" :key="card.title" class="statistic-card">
+        <ElStatistic :value="statisticValue">
+          <template #title>
+            {{ card.title }}
+            <ElIcon><Component :is="card.icon" /></ElIcon>
+          </template>
+        </ElStatistic>
+        <div class="statistic-footer">
+          <span>{{ card.comparison }}</span>
+          <span class="increase">
+            {{ increasePercentage }}%<ElIcon><CaretTop /></ElIcon>
+          </span>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="scheduled-tasks">
-    <h2>定时任务</h2>
-  </div>
+    <div class="scheduled-tasks">
+      <h2>定时任务</h2>
+    </div>
+  </ElMain>
 </template>
 
 <style lang="scss" scoped>

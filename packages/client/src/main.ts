@@ -5,6 +5,7 @@ import router from './router'
 
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import '@/styles/index.scss'
+import '@/styles/element.scss'
 
 const app = createApp(App)
 const pinia = createPinia()

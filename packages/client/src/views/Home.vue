@@ -16,12 +16,14 @@ provide('isloading', isloading)
     </ElHeader>
     <ElContainer>
       <Sidebar />
-      <ElMain><RouterView /></ElMain>
+      <KeepAlive>
+        <RouterView />
+      </KeepAlive>
     </ElContainer>
   </ElContainer>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .el-header {
   --el-header-height: 56px;
   display: flex;
@@ -44,5 +46,9 @@ provide('isloading', isloading)
 
 .el-main {
   --el-main-padding: 12px;
+  
+  @include xs {
+    --el-main-padding: 0;
+  }
 }
 </style>
