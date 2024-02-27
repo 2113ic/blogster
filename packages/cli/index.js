@@ -1,6 +1,6 @@
 import { Command } from 'commander'
+import { server } from './src/server'
 import { version } from './package.json'
-import { startUI } from './src/start'
 
 const program = new Command()
 
@@ -11,6 +11,6 @@ program
 
 program.command('ui')
   .description('open in your browser')
-  .action(startUI)
+  .action(server)
 
 program.parse()

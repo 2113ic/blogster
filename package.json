@@ -5,7 +5,10 @@
   "private": true,
   "packageManager": "pnpm@8.15.4",
   "scripts": {
-    "dev": "pnpm -F @icxy-blog/client dev"
+    "dev": "pnpm -F @icxy-blog/client dev",
+    "dev:cli": "pnpm -F @icxy-blog/cli dev",
+    "build:cli": "pnpm -F @icxy-blog/cli build",
+    "build:client": "pnpm -F @icxy-blog/client build"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.4",
