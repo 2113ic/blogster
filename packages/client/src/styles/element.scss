@@ -1,0 +1,15 @@
+// el-tabs
+.el-tabs__nav-wrap {
+  display: inline-block;
+  padding: 0 12px;
+  border-radius: 10px;
+  background-color: get('fill-color', 'light');
+
+  &::after {
+    background: none;
+  }
+
+  .el-tabs__active-bar {
+    height: 3px;
+  }
+}

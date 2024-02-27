@@ -9,6 +9,7 @@ export default antfu({
     quotes: 'single',
   },
   rules: {
+    'no-console': 'off',
     'antfu/if-newline': 'off',
     'vue/singleline-html-element-content-newline': 'off',
   },

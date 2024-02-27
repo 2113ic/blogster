@@ -3,16 +3,16 @@
   "type": "module",
   "version": "0.0.1-dev",
   "private": true,
-  "packageManager": "pnpm@8.15.3",
+  "packageManager": "pnpm@8.15.4",
   "scripts": {
     "dev": "pnpm -F @icxy-blog/client dev",
-    "dev:cli": "pnpm -F @icxy-blog/cli start"
+    "dev:cli": "pnpm -F @icxy-blog/cli dev",
+    "build:cli": "pnpm -F @icxy-blog/cli build",
+    "build:client": "pnpm -F @icxy-blog/client build"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.4",
     "@icxy-blog/cli": "workspace:^",
-    "@icxy-blog/core": "workspace:^",
-    "dotenv": "^16.4.4",
     "eslint": "^8.56.0",
     "fast-glob": "^3.3.2",
     "tsx": "^4.7.1",
