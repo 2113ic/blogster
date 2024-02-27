@@ -6,5 +6,5 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true
   },
-  "include": ["plugin/*.ts", "vite.config.ts"]
+  "include": ["vite.config.ts"]
 }

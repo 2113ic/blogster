@@ -2,7 +2,6 @@
 import { provide, ref } from 'vue'
 
 const isloading = ref(false)
-
 provide('isloading', isloading)
 </script>
 
@@ -31,11 +30,9 @@ provide('isloading', isloading)
 }
 
 .el-container {
-  height: 100vh;
-
   & > & {
-    margin: 0 12px;
-    padding: 12px;
+    height: calc(100vh - 56px);
+    margin: 0 12px; padding: 12px;
     background-color: get('bg-color');
     border-radius: 12px 12px 0 0;
 

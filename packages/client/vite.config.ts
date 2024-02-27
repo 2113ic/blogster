@@ -28,9 +28,16 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: 
-          `@use '@/styles/forward' as *;`,
+        additionalData:
+          `@use '@/styles/utils' as *;`,
       },
     },
+  },
+  optimizeDeps: {
+    include: [
+      '@vueuse/core',
+      'element-plus/es',
+      'element-plus/es/components/**/style/css',
+    ],
   },
 })

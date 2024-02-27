@@ -41,6 +41,7 @@ watch(windowWidth, (val) => {
 
 <style lang="scss">
 .el-aside {
+  margin-right: 12px;
   border-right: 1px dashed var(--el-border-color);
 
   @include xs() {
