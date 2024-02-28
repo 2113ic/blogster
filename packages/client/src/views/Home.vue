@@ -16,9 +16,11 @@ provide('isloading', isloading)
     </ElHeader>
     <ElContainer>
       <Sidebar />
-      <KeepAlive>
-        <RouterView />
-      </KeepAlive>
+      <router-view v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
     </ElContainer>
   </ElContainer>
 </template>
@@ -46,7 +48,7 @@ provide('isloading', isloading)
 
 .el-main {
   --el-main-padding: 12px;
-  
+
   @include xs {
     --el-main-padding: 0;
   }

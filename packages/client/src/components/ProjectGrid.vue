@@ -1,16 +1,39 @@
 <script setup lang="ts">
 import type { Endpoints } from '@octokit/types'
+import type { Ref } from 'vue'
+import { inject } from 'vue'
 
 type ProjectListType = Endpoints['GET /user/repos']['response']['data']
 
 const props = defineProps<{
   list: ProjectListType
 }>()
+
+const selectedID = inject('selectedID') as Ref<string[]>
+
+function selected(evt: MouseEvent) {
+  const target = evt.target as HTMLElement
+
+  if (target.classList.contains('project-grid')
+    || target.classList.contains('name')) return
+
+  const parent = target.closest('.project-item')
+
+  if (parent) {
+    parent.classList.toggle('is-active')
+    selectedID.value.push(parent.getAttribute('data-id')!)
+  }
+}
 </script>
 
 <template>
-  <div class="project-grid">
-    <div v-for="item in props.list" :key="item.id" class="project-item">
+  <div class="project-grid" @click="selected">
+    <div
+      v-for="item in props.list"
+      :key="item.node_id"
+      :data-id="item.node_id"
+      class="project-item"
+    >
       <div class="cover">{{ item.name.at(0)?.toUpperCase() }}</div>
       <div class="content">
         <a class="name" :href="item.html_url" target="_blank">{{ item.name }}</a>
@@ -45,6 +68,10 @@ const props = defineProps<{
   border-radius: 6px;
   overflow: hidden;
 
+  &.is-active {
+    outline: 3px dashed get('color', 'danger-light-3');
+  }
+
   .cover {
     float: left;
     display: flex;
@@ -53,6 +80,7 @@ const props = defineProps<{
     width: 45px; height: 100%;
     font-weight: 600;
     overflow: hidden;
+    cursor: default;
   }
 
   .content {
@@ -61,6 +89,7 @@ const props = defineProps<{
   }
 
   .name {
+    white-space: nowrap;
     color: get('color', 'primary-dark-2');
   }
 

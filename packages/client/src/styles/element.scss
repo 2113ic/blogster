@@ -22,3 +22,15 @@
 .el-loading-mask {
   background: none !important;
 }
+
+// el-drawer
+.el-drawer {
+  top: 56px !important;
+  height: auto !important;
+  border-top-left-radius: 12px;
+
+  @include xs() {
+    width: 100% !important;
+    border-top-right-radius: 12px;
+  }
+}

@@ -5,7 +5,7 @@ import { ref, watch } from 'vue'
 
 const menuItems = [
   { icon: Stopwatch, text: '仪表盘', route: 'dashboard' },
-  { icon: Sugar, text: '作品集', route: 'project' },
+  { icon: Sugar, text: '项目', route: 'project' },
   { icon: Files, text: '文章', route: 'article' },
   { icon: Message, text: '消息', route: 'message' },
   { icon: Fries, text: '插件', route: 'plugin' },
