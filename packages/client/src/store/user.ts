@@ -5,6 +5,5 @@ export const useUserStore = defineStore('user', {
     name: '',
     userName: '',
     avatarURL: '/logo.png',
-    accessToken: '',
   }),
 })

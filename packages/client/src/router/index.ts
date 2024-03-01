@@ -27,19 +27,21 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
   const res = await supabase.auth.getSession()
-  const userStore = useUserStore()
 
   if (res.data.session) {
     if (to.path === '/login') return '/dashboard'
     const session = res.data.session
     const metadata = session.user.user_metadata
+    const userStore = useUserStore()
 
-    userStore.$state = {
+    if (session.provider_token)
+      localStorage.setItem('gh-access-token', session.provider_token)
+
+    userStore.$patch({
       name: metadata.name,
       userName: metadata.user_name,
       avatarURL: metadata.avatar_url,
-      accessToken: session.provider_token!,
-    }
+    })
   }
   else if (to.path !== '/login') {
     return '/login'
