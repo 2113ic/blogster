@@ -1,3 +1,4 @@
+import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '@/store/user'
 import supabase from '@/api/supabase'
@@ -15,9 +16,21 @@ const router = createRouter({
       path: '/',
       redirect: '/dashboard',
       component: () => import('@/views/Home.vue'),
-      children: Object.keys(homeChildren).map((path) => {
+      children: Object.keys(homeChildren).map<RouteRecordRaw>((path) => {
+        const pathName = path.match(/\/(\w+)\.vue$/)?.[1] || ''
+        if (pathName === 'Dashboard') {
+          return {
+            path: pathName,
+            component: homeChildren[path],
+            beforeEnter(to) {
+              if (to.hash.startsWith('#access_token'))
+                return '/dashboard'
+            },
+          }
+        }
+
         return {
-          path: path.match(/\/(\w+)\.vue$/)?.[1] || '',
+          path: pathName,
           component: homeChildren[path],
         }
       }),
