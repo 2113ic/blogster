@@ -21,8 +21,9 @@ async function signOut() {
     userStore.$reset()
     router.replace('/login')
   }
-  catch (e: any) {
-    console.error('Error logout with GitHub:', e.message)
+  catch (err) {
+    if (err instanceof Error)
+      console.error('Error logout with GitHub:', err.message)
   }
   finally {
     isloading.value = false
@@ -32,7 +33,7 @@ async function signOut() {
 
 <template>
   <ElDropdown>
-    <img class="avatar" :src="userStore.avatar_url" alt="avatar">
+    <img class="avatar" :src="userStore.avatarURL" alt="avatar">
     <template #dropdown>
       <ElDropdownMenu>
         <ElDropdownItem>我的博客</ElDropdownItem>

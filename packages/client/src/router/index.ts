@@ -26,13 +26,20 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
-  const { data: { session } } = await supabase.auth.getSession()
+  const res = await supabase.auth.getSession()
   const userStore = useUserStore()
 
-  if (session) {
+  if (res.data.session) {
     if (to.path === '/login') return '/dashboard'
-    const { avatar_url, user_name, name } = session!.user.user_metadata
-    userStore.$state = { avatar_url, user_name, name }
+    const session = res.data.session
+    const metadata = session.user.user_metadata
+
+    userStore.$state = {
+      name: metadata.name,
+      userName: metadata.user_name,
+      avatarURL: metadata.avatar_url,
+      accessToken: session.provider_token!,
+    }
   }
   else if (to.path !== '/login') {
     return '/login'
