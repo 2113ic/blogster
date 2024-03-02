@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import type { Endpoints } from '@octokit/types'
-import type { Ref } from 'vue'
-import { inject } from 'vue'
+import { ref } from 'vue'
+import type { SbRepos } from '@/types/repo'
 
-type ProjectListType = Endpoints['GET /user/repos']['response']['data']
+const model = defineModel<SbRepos>()
+const selectedRepoIdSet = new Set<string>()
 
-const props = defineProps<{
-  list: ProjectListType
-}>()
-
-const selectedID = inject('selectedID') as Ref<string[]>
+defineExpose({ repoIdSet: selectedRepoIdSet })
 
 function selected(evt: MouseEvent) {
   const target = evt.target as HTMLElement
@@ -18,26 +14,22 @@ function selected(evt: MouseEvent) {
     || target.classList.contains('name')) return
 
   const parent = target.closest('.project-item')
+  if (!parent) return
 
-  if (parent) {
-    parent.classList.toggle('is-active')
-    selectedID.value.push(parent.getAttribute('data-id')!)
-  }
+  const status = parent.classList.toggle('is-active')
+  const id = parent.getAttribute('data-id')!
+  if (status) selectedRepoIdSet.add(id)
+  else selectedRepoIdSet.delete(id)
 }
 </script>
 
 <template>
   <div class="project-grid" @click="selected">
-    <div
-      v-for="item in props.list"
-      :key="item.node_id"
-      :data-id="item.node_id"
-      class="project-item"
-    >
-      <div class="cover">{{ item.name.at(0)?.toUpperCase() }}</div>
+    <div v-for="{ node_id, metadata } in model" :key="node_id" class="project-item" :data-id="node_id">
+      <div class="cover">{{ metadata.name.at(0)?.toUpperCase() }}</div>
       <div class="content">
-        <a class="name" :href="item.html_url" target="_blank">{{ item.name }}</a>
-        <div class="desc ellipsis-multiline">{{ item.description }}</div>
+        <a class="name" :href="metadata.html_url" target="_blank">{{ metadata.name }}</a>
+        <div class="desc ellipsis-multiline">{{ metadata.description }}</div>
       </div>
     </div>
   </div>
@@ -46,6 +38,7 @@ function selected(evt: MouseEvent) {
 <style lang="scss">
 .project-grid {
   display: grid;
+  margin: 5px;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 
@@ -74,12 +67,14 @@ function selected(evt: MouseEvent) {
 
   .cover {
     float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px; height: 100%;
-    font-weight: 600;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 100%;
+    padding-top: 4px;
+    margin-right: 5px;
+    font: 600 24px BEYNO;
     cursor: default;
   }
 

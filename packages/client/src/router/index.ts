@@ -51,6 +51,7 @@ router.beforeEach(async (to) => {
       localStorage.setItem('gh-access-token', session.provider_token)
 
     userStore.$patch({
+      id: session.user.id,
       name: metadata.name,
       userName: metadata.user_name,
       avatarURL: metadata.avatar_url,

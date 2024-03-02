@@ -36,7 +36,7 @@ provide('isloading', isloading)
 .el-container {
   & > & {
     height: calc(100vh - 56px);
-    margin: 0 12px; padding: 12px;
+    margin: 0 12px; padding: 16px 12px;
     background-color: get('bg-color');
     border-radius: 12px 12px 0 0;
 
@@ -47,10 +47,10 @@ provide('isloading', isloading)
 }
 
 .el-main {
-  --el-main-padding: 12px;
+  --el-main-padding: 0;
 
-  @include xs {
-    --el-main-padding: 0;
+  @include xs() {
+    --el-main-padding: 12px 0 0;
   }
 }
 </style>
