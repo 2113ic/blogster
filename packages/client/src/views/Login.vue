@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import IconGithub from '@icons/Github.vue'
 import supabase from '@/api/supabase'
-import IconGithub from '~icons/carbon/logo-github'
 
 const isloading = ref(false)
 

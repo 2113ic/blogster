@@ -1,0 +1,31 @@
+@use '../utils' as *;
+
+.el-dialog {
+  --dialog-height: 84vh;
+  --el-dialog-padding-primary: 24px;
+  max-height: var(--dialog-height);
+  border-radius: 12px;
+
+  &__header {
+    overflow: hidden;
+  }
+
+  &__body {
+    max-height: calc(var(--dialog-height) - 160px);
+    overflow-y: auto;
+  }
+
+  .dialog-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .el-input {
+    --el-input-width: 30%;
+    float: right;
+
+    @include xs() {
+      --el-input-width: 45%;
+    }
+  }
+}

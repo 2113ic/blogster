@@ -7,7 +7,8 @@
     "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./src/*"],
-      "@icxy-blog/*": ["../*"]
+      "@et": ["./src/styles/element-plus/*"],
+      "@icons/*": ["./src/components/icons/*"],
     },
     "resolveJsonModule": true,
     "types": [

@@ -8,6 +8,9 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
+  server: {
+    host: '0.0.0.0'
+  },
   plugins: [
     vue(),
     Icons(),
@@ -15,7 +18,7 @@ export default defineConfig({
       resolvers: [
         ElementPlusResolver(),
         IconsResolver({
-          enabledCollections: ['carbon', 'twemoji'],
+          enabledCollections: ['twemoji'],
         }),
       ],
     }),
@@ -23,6 +26,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
+      '@et': resolve(__dirname, 'src/styles/element-plus'),
+      '@icons': resolve(__dirname, 'src/components/icons')
     },
   },
   css: {
