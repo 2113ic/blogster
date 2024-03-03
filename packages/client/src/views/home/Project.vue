@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { ComputedRef } from 'vue'
-import { computed, onBeforeMount, onMounted, ref, toRaw, watch } from 'vue'
+import { onBeforeMount, ref, toRaw, watch } from 'vue'
 import { Delete, Plus } from '@element-plus/icons-vue'
-import ProjectGrid from '@/components/ProjectGrid.vue'
+import { ElMessage } from 'element-plus'
 
-import type { Repos, SbProjectResponse, SbRepos } from '@/types/repo'
+import ProjectGrid from '@/components/ProjectGrid.vue'
+import type { Repos, SbRepos } from '@/types/repo'
 import supabase from '@/api/supabase'
 import { octokit } from '@/api/octokit'
 import { useUserStore } from '@/store/user'
@@ -12,6 +12,7 @@ import { useUserStore } from '@/store/user'
 const isloading = ref(false)
 const isloadingAdd = ref(false)
 const isloadingSave = ref(false)
+const isloadingDel = ref(false)
 const isDialogOpen = ref(false)
 
 let rawRepos: Repos
@@ -32,18 +33,21 @@ onBeforeMount(async () => {
       .from('project').select()
       .throwOnError()
 
-    if (data) {
-      displayRepos.value = data
-      existedRepoId.value = getExistRepoId(data)
-    }
+    displayRepos.value = data!
   }
   catch (err) {
-    if (err instanceof Error)
-      console.error('SUPABASE ERROR:', err.message)
+    if (err instanceof Error) {
+      console.error('SUPABASE ERROR:', err)
+      ElMessage({ message: err.message })
+    }
   }
   finally {
     isloading.value = false
   }
+})
+
+watch(displayRepos, (value) => {
+  existedRepoId.value = getExistRepoId(value)
 })
 
 watch(searchText, (val) => {
@@ -60,7 +64,7 @@ watch(searchText, (val) => {
   filteredRepos.value = bucket
 })
 
-function getExistRepoId(repos: SbProjectResponse[]) {
+function getExistRepoId(repos: SbRepos) {
   return repos.map(repo => repo.node_id)
 }
 
@@ -78,8 +82,10 @@ async function handleAdd() {
     filteredRepos.value = transformRepo(res.data)
   }
   catch (err) {
-    if (err instanceof Error)
-      console.error('GITHUB ERROR:', err.message)
+    if (err instanceof Error) {
+      console.error('GITHUB ERROR:', err)
+      ElMessage({ message: err.message, type: 'error' })
+    }
   }
   finally {
     isloadingAdd.value = false
@@ -96,7 +102,28 @@ function transformRepo(repos: Repos) {
   return result
 }
 
-async function handleDel() {}
+async function handleDel() {
+  const ids = [...displayGridRef.value!.repoIdSet]
+  isloadingDel.value = true
+
+  try {
+    await supabase.from('project')
+      .delete().in('node_id', ids)
+      .throwOnError()
+    displayRepos.value = displayRepos.value.filter(item => 
+      !displayGridRef.value?.repoIdSet.has(item.node_id)
+    )
+  }
+  catch (err) {
+    if (err instanceof Error) {
+      console.error('SUPABASE ERROR:', err)
+      ElMessage({ message: err.message, type: 'error' })
+    }
+  }
+  finally {
+    isloadingDel.value = false
+  }
+}
 
 async function handleDialogSave() {
   isloadingSave.value = true
@@ -111,14 +138,15 @@ async function handleDialogSave() {
   }))
 
   try {
-    const res = await supabase.from('project')
-      .upsert(data).select()
-      .throwOnError()
-    displayRepos.value = res.data!
+    await supabase.from('project')
+      .upsert(data).throwOnError()
+    displayRepos.value = displayRepos.value.concat(data)
   }
   catch (err) {
-    if (err instanceof Error)
-      console.error('SUPABASE ERROR:', err.message)
+    if (err instanceof Error) {
+      console.error('SUPABASE ERROR:', err)
+      ElMessage({ message: err.message, type: 'error' })
+    }
   }
   finally {
     isloadingSave.value = false
@@ -135,7 +163,7 @@ function handleCancel() {
 <template>
   <ElMain v-loading="isloading">
     <div class="header">
-      <ElButton text bg circle :icon="Delete" @click="handleDel" />
+      <ElButton text bg circle :icon="Delete" :loading="isloadingDel" @click="handleDel" />
       <ElButton text bg circle :icon="Plus" :loading="isloadingAdd" @click="handleAdd" />
     </div>
     <ProjectGrid ref="displayGridRef" v-model="displayRepos" class="project-show" />
