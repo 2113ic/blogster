@@ -33,7 +33,7 @@ async function signOut() {
 
 <template>
   <ElDropdown>
-    <img class="avatar" :src="userStore.avatarURL" alt="avatar">
+    <img class="avatar" :src="userStore.avatarURL || '/logo.png'" alt="avatar">
     <template #dropdown>
       <ElDropdownMenu>
         <ElDropdownItem>我的博客</ElDropdownItem>

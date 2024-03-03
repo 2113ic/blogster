@@ -47,6 +47,7 @@ async function signInWithGithub() {
       console.error(err)
       ElMessage.error({
         message: `Error signing in with GitHub: ${err.message}`,
+        type: 'error',
       })
     }
   }
@@ -77,7 +78,7 @@ async function signIn() {
   catch (err) {
     if (err instanceof Error) {
       console.error(err)
-      ElMessage.error({ message: err.message })
+      ElMessage({ message: err.message, type: 'error' })
     }
   }
   finally {
