@@ -11,13 +11,13 @@
     "build:client": "pnpm -F @icxy-blog/client build"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.6.4",
+    "@antfu/eslint-config": "^2.7.0",
     "@icxy-blog/cli": "workspace:^",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "fast-glob": "^3.3.2",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3",
-    "vite": "^5.1.1",
-    "vite-plugin-dts": "^3.7.2"
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.7.3"
   }
 }
