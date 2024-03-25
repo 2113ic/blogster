@@ -78,7 +78,17 @@ function sortByDate(aritcles: SubAritcles) {
 }
 
 async function handleAdd() {}
-async function handleDel() {}
+
+function handleSort() {
+  aritcles.value = aritcles.value.reverse()
+}
+
+function handleTag(e: MouseEvent) {
+  const target = e.target as HTMLElement
+
+  if (target.tagName === 'LI')
+    searchText.value = target.firstChild?.textContent?.trim() || ''
+}
 
 watch(searchText, (val) => {
   aritcles.value = aritclesOrigin.filter(item =>
@@ -95,18 +105,18 @@ watch(searchText, (val) => {
     <div class="header">
       <ElInput v-model="searchText" placeholder="请输入" />
       <div class="menu">
-        <ElButton text bg circle :icon="Sort" :loading="isloadingDel" @click="handleDel" />
+        <ElButton text bg circle :icon="Sort" :loading="isloadingDel" @click="handleSort" />
         <ElButton text bg circle :icon="Plus" :loading="isloadingAdd" @click="handleAdd" />
       </div>
     </div>
-    <ul class="tags">
-      <li
-        v-for="[tag, count] in Object.entries(tagSet)"
-        :key="tag" class="tag-item">
-        {{ tag }} <span class="count">{{ count }}</span>
-      </li>
-    </ul>
     <div class="content">
+      <ul class="tags">
+        <li
+          v-for="[tag, count] in Object.entries(tagSet)"
+          :key="tag" class="tag-item" @click="handleTag">
+          {{ tag }} <span class="count">{{ count }}</span>
+        </li>
+      </ul>
       <ul class="aritcle-list">
         <AritcleItem
           v-for="item in aritcles"
@@ -132,36 +142,40 @@ watch(searchText, (val) => {
 }
 
 .tags {
+  position: sticky;
+  top: -1px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-
-  padding: 0px;
+  margin: 0;
+  padding: 12px 0;
   font-size: 14px;
   list-style: none;
+  background-color: get('bg-color');
+  border-bottom: 1px dashed get('border-color', 'light');
 
   .tag-item {
     display: flex;
     align-items: center;
     gap: 5px;
     padding: 5px 8px;
+    text-transform: uppercase;
     border-radius: 4px;
     background-color: get('fill-color', 'light');
     cursor: pointer;
 
     .count {
-      min-width: 16px;
-      height: 16px;
-      padding: 3px;
+      min-width: 20px;
+      height: 20px;
       text-align: center;
       border-radius: 50%;
-      background-color: get('fill-color', 'dark')
+      background-color: get('fill-color', 'darker')
     }
   }
 }
 
 .content {
-  height: calc(100% - 92px);
+  height: calc(100% - 44px);
   overflow: auto;
 }
 
