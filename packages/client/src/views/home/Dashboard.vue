@@ -34,7 +34,7 @@ onBeforeMount(async () => {
     const res = await octokit.request(
       'GET /repos/{owner}/{repo}/actions/workflows',
       {
-        owner: userStore.userName!,
+        owner: userStore.owner!,
         repo: `${userStore.name}.github.io`,
       },
     )
@@ -60,7 +60,7 @@ async function handleAdd() {
     const res = await octokit.request(
       'POST /repos/{owner}/{repo}/actions/workflows',
       {
-        owner: userStore.userName!,
+        owner: userStore.owner!,
         repo: `${userStore.name}.github.io`,
         // name: '工作流名',
         // config: 工作流配置,
@@ -89,7 +89,7 @@ async function handleDel() {
     const res = await octokit.request(
       'DELETE /repos/{owner}/{repo}/actions/workflows/{workflow_id}',
       {
-        owner: userStore.userName!,
+        owner: userStore.owner!,
         repo: `${userStore.name}.github.io`,
         workflow_id: '工作流id',
       },
@@ -117,7 +117,7 @@ async function handleRefresh() {
     const res = await octokit.request(
       'POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs',
       {
-        owner: userStore.userName!,
+        owner: userStore.owner!,
         repo: `${userStore.name}.github.io`,
         workflow_id: '工作流id',
       },
