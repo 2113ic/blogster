@@ -12,5 +12,8 @@ export default antfu({
     'no-console': 'off',
     'antfu/if-newline': 'off',
     'vue/singleline-html-element-content-newline': 'off',
+    'vue/html-closing-bracket-newline': ['warn', {
+      multiline: 'never',
+    }],
   },
 })

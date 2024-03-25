@@ -11,7 +11,8 @@
   }
 
   &__body {
-    max-height: calc(var(--dialog-height) - 160px);
+    color: inherit;
+    height: calc(var(--dialog-height) - 160px);
     overflow-y: auto;
   }
 

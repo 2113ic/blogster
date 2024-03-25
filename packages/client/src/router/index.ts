@@ -53,7 +53,7 @@ router.beforeEach(async (to) => {
     userStore.$patch({
       id: session.user.id,
       name: metadata.name,
-      userName: metadata.user_name,
+      owner: metadata.user_name,
       avatarURL: metadata.avatar_url,
     })
   }

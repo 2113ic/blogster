@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { ElMessage } from 'element-plus'
 import App from './App.vue'
 import router from './router'
 
@@ -10,6 +11,13 @@ import '@et/index.scss'
 
 const app = createApp(App)
 const pinia = createPinia()
+
+app.config.errorHandler = (err) => {
+  if (err instanceof Error) {
+    console.error(err)
+    ElMessage({ message: err.message })
+  }
+}
 
 app.use(pinia)
 app.use(router)

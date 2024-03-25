@@ -11,8 +11,8 @@ import { useUserStore } from '@/store/user'
 
 const isloading = ref(false)
 const isloadingAdd = ref(false)
-const isloadingSave = ref(false)
 const isloadingDel = ref(false)
+const isloadingSave = ref(false)
 const isDialogOpen = ref(false)
 
 let rawRepos: Repos
@@ -110,8 +110,8 @@ async function handleDel() {
     await supabase.from('project')
       .delete().in('node_id', ids)
       .throwOnError()
-    displayRepos.value = displayRepos.value.filter(item => 
-      !displayGridRef.value?.repoIdSet.has(item.node_id)
+    displayRepos.value = displayRepos.value.filter(item =>
+      !displayGridRef.value?.repoIdSet.has(item.node_id),
     )
   }
   catch (err) {
